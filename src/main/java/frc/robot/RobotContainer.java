@@ -26,11 +26,6 @@ public class RobotContainer {
 
   private DrivetrainCommand driveCommand = new DrivetrainCommand(DRIVETRAIN);
 
-  public static final int FRONT_LEFT_DRIVE_MOTOR = 0;
-  public static final int BACK_LEFT_DRIVE_MOTOR = 1;
-  public static final int FRONT_RIGHT_DRIVE_MOTOR = 2;
-  public static final int BACK_RIGHT_DRIVE_MOTOR = 3;
-
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
@@ -60,4 +55,6 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return null; //TODO- create auto command
   }
+
+
 }
