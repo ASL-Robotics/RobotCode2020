@@ -22,7 +22,7 @@ public class Auto1 extends SequentialCommandGroup {
    */
   public Auto1(Drivetrain train, PatrickSensor paddy, ShooterSubsystem shooter) {
     super(
-      //Align and drive to target. Shoot
+      //Align and drive to target. Shoot **TODO**
       //new Align(train, paddy), 
       //new RunShooterCommand(shooter, 1, 5)
       //TODO- shooter commands (feed, shoot, etc)
@@ -36,15 +36,21 @@ public class Auto1 extends SequentialCommandGroup {
       new MoveCommand(train, -27.75, 0.5), 
       new TurnCommand(train, 90, 0.5), 
 
-      //move all the way to the third ball and collect them allnew CollectionAuto1(train), 
+      //move all the way to the third ball and collect them allnew CollectionAuto1(train), **TODO** 
       new CollectionAuto1(train), 
       new CollectionOff(), 
 
       //Turn and move to target
       new TurnCommand(train, 180, 0.5), 
-      //new Align(train, paddy), 
+      //new Align(train, paddy), **TODO**
 
-      //Shoot
+      //Shoot **TODO**
       //new RunShooterCommand(shooter, 1));
+
+      //Back up past starting line
+      new MoveCommand(train, 130, 0.5)
+
+      //DONE :DDD
+    );
   }
 }
