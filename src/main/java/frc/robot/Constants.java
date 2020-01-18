@@ -20,12 +20,12 @@ public final class Constants {
   // === ROBOT PORTS === //
 
   // INTAKE MOTORS
-  public static final int WHEEL_INTAKE_MOTOR = 4;
-  public static final int DEPLOY_INTAKE_MOTOR = 5;
+  public static final int WHEEL_INTAKE_MOTOR = 0;
+  public static final int DEPLOY_INTAKE_MOTOR = 1;
   
   // INTAKE PISTONS
-  public static final int INTAKE_PISTON_1 = 4;
-  public static final int INTAKE_PISTON_2 = 5;
+  public static final int INTAKE_PISTON_1 = 2;
+  public static final int INTAKE_PISTON_2 = 3;
 
   // === CONTROLLERS === //
   
@@ -39,14 +39,13 @@ public final class Constants {
   public static final int LEFT_TRIGGER_AXIS = 7;
 
   // CONTROLLERS
-  public static final int DRIVER_CONTROLLER = 0;
   public static final int OPERATOR_CONTROLLER = 1;
 
   // TODO: MAKE TOGGLEABLE???
-  public static final int DEPLOY_INTAKE = 5;
-  public static final int RETRACT_INTAKE = 6;
-  public static final int END_INTAKE = 8;
-  public static final int RUN_INTAKE = 9;
+  public static final int DEPLOY_INTAKE = 4;
+  public static final int RETRACT_INTAKE = 5;
+  public static final int END_INTAKE = 6;
+  public static final int RUN_INTAKE = 7;
 
 
   
