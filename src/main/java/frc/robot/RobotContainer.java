@@ -21,12 +21,6 @@ public class RobotContainer {
     private final Intake INTAKE = new Intake();
 
     // INTAKE COMMANDS
-    private final StartEndCommand deployIntake = new StartEndCommand(
-        () -> INTAKE.deploySpeed(DEPLOY_INTAKE_SPEED),
-        () -> INTAKE.deploySpeed(0),
-        INTAKE
-    );
-
     private final InstantCommand intakeOn = new InstantCommand(
         () -> INTAKE.wheelSpeed(WHEEL_INTAKE_SPEED),
         INTAKE
@@ -37,13 +31,7 @@ public class RobotContainer {
         INTAKE
     );
 
-    private final StartEndCommand retractIntake = new StartEndCommand(
-    () -> INTAKE.deploySpeed(-DEPLOY_INTAKE_SPEED),
-    () -> INTAKE.deploySpeed(0),
-    INTAKE
-    );
-
-    // TODO: PISTON INTAKE
+    // PISTON INTAKE
 
     private final StartEndCommand pistonDeploy = new StartEndCommand(
         () -> INTAKE.deployPiston(),
@@ -58,23 +46,11 @@ public class RobotContainer {
         INTAKE
     );
 
-
-  
     // MAKE A NEW JOYSTICK
 
     public final Joystick opController = new Joystick(OPERATOR_CONTROLLER);
   
     // CONFIG BUTTON BINDINGS (See constants.java to change specific ports etc.)
-
-    // CLIMB BUTTONS
-
-    // INTAKE BUTTONS
-
-    private final JoystickButton deployIntakeButton = new JoystickButton(opController,DEPLOY_INTAKE),
-                                 retractIntakeButton = new JoystickButton(opController, RETRACT_INTAKE),
-                                 endIntakeButton = new JoystickButton(opController, END_INTAKE),
-                                 runIntakeButton = new JoystickButton(opController, RUN_INTAKE);
-    
 
     // PISTON-Y INTAKE BUTTONS
     // TODO: piston/motor change
@@ -93,17 +69,6 @@ public class RobotContainer {
      * Config button actions: it changes what does each button do. Don't touch this to change bindings
      */
     private void configureButtonActions() {
-
-        // TODO- add buttons for intake and change climb buttons
-
-        // INTAKE BUTTONS
-        deployIntakeButton.whenPressed(deployIntake);
-        retractIntakeButton.whenPressed(retractIntake);
-        endIntakeButton.whenPressed(intakeOff.andThen(retractIntake.withTimeout(1)));
-        runIntakeButton.whenPressed(deployIntake.withTimeout(1).andThen(intakeOn));
-
-        // TODO: either above or below is redundant. fix.
-
         // PISTON-Y INTAKE BUTTONS
         pistonDeployIntakeButton.whenPressed(pistonDeploy.withTimeout(1).andThen(intakeOn));
         pistonRetractIntakeButton.whenPressed(intakeOff.andThen(pistonRetract.withTimeout(1)));
