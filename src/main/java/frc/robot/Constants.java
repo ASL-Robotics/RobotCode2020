@@ -46,8 +46,10 @@ public final class Constants {
   public static final int RETRACT_INTAKE = 5;
   public static final int END_INTAKE = 6;
   public static final int RUN_INTAKE = 7;
-
-
+  /* CODE FOR TESTING
+  public static final int FORE_BUTTON = 0;
+  public static final int BACK_BUTTON = 1;
+  */
   
   // === SPEED CONSTANTS === //
   
