@@ -21,7 +21,13 @@ public final class Constants {
   // CONTROL PANEL 
   public static final int SPIN_MOTOR = 0;
   public static final int SPIN_BUTTON = 1;
+  
 
+  // CONTROL PANEL PISTONS
+  public static final int CONTROL_PISTON_1 = 0;
+  public static final int CONTROL_PISTON_2 = 1;
+  public static final int CONTROL_PISTON_BUTTON = 2;
+  public static final int CONTROL_PISTON_BUTTON2 = 3;
 
   // === CONTROLLERS === //
   // STICKS

@@ -19,12 +19,27 @@ public class RobotCommands{
     private final ControlPanel CONTROL = new ControlPanel();
 
     // == COMMANDS == //
-    // CONTROL PANEL COMMAND
+    // == CONTROL PANEL MOTOR COMMAND == //
     public final StartEndCommand controlSpin = new StartEndCommand(
         () -> CONTROL.spinnerOn(),
         () -> CONTROL.spinnerOff(),
         CONTROL
     ); 
+
+    // == CONTROL PANEL PISTON COMMAND == //
+    
+    public final StartEndCommand controlDeploy = new StartEndCommand(
+        () -> CONTROL.lifterPistonUp(), 
+        () -> CONTROL.lifterPistonOff(),
+        CONTROL
+    );
+
+    public final StartEndCommand controlRetract = new StartEndCommand(
+        () -> CONTROL.lifterPistonDown(), 
+        () -> CONTROL.lifterPistonOff(),
+        CONTROL
+    );
+
 }
         
 
