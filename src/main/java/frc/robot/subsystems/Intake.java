@@ -21,7 +21,7 @@ public class Intake extends SubsystemBase {
 
   public Intake() {
     wheelMotor = new VictorSP(WHEEL_INTAKE_MOTOR);
-   intakePiston = new DoubleSolenoid(INTAKE_PISTON_1, INTAKE_PISTON_2);
+    intakePiston = new DoubleSolenoid(INTAKE_PISTON_1, INTAKE_PISTON_2);
 
   }
 
@@ -43,8 +43,19 @@ public class Intake extends SubsystemBase {
     intakePiston.set(DoubleSolenoid.Value.kOff);
   }
 
+  /* TESTING CODE FOR ONE MOTOR
+  public void wheelOnFore() {
+    wheelMotor.set(0.5);
+  }
+  public void wheelOnBack() {
+    wheelMotor.set(-0.5);
+  }
+  public void wheelOff() {
+    wheelMotor.set(0);
+  }
   
-  
+  */
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

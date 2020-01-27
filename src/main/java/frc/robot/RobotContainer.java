@@ -30,6 +30,20 @@ public class RobotContainer {
         () -> INTAKE.wheelSpeed(0),
         INTAKE
     );
+    /* CODE FOR 1 MOTOR 
+    private final StartEndCommand fore = new StartEndCommand(
+        () -> INTAKE.wheelOnFore(),
+        () -> INTAKE.wheelOff(),
+        INTAKE
+    )
+    private final StartEndCommand back = new StartEndCommand(
+        () -> INTAKE.wheelOnBack(),
+        () -> INTAKE.wheelOff(),
+        INTAKE
+    )
+
+
+    */
 
     // PISTON INTAKE
 
@@ -57,6 +71,8 @@ public class RobotContainer {
 
     private final JoystickButton pistonDeployIntakeButton = new JoystickButton(opController, DEPLOY_INTAKE),
                                  pistonRetractIntakeButton = new JoystickButton(opController, RETRACT_INTAKE);
+                               //wheelOnFore = new JoystickButton(opController, FORE_BUTTON),
+                               //wheelOnBack = new JoystickButton(opController, BACK_BUTTON);
     /**
      * The container for the robot.  Contains subsystems, OI devices, and commands.
      */
@@ -72,8 +88,10 @@ public class RobotContainer {
         // PISTON-Y INTAKE BUTTONS
         pistonDeployIntakeButton.whenPressed(pistonDeploy.withTimeout(1).andThen(intakeOn));
         pistonRetractIntakeButton.whenPressed(intakeOff.andThen(pistonRetract.withTimeout(1)));
-
-
+        /* CODE FOR TESTING
+        wheelOnFore.whenHeld(fore);
+        wheelOnBack.whenHeld(back);
+        */
     }
 
     /**
