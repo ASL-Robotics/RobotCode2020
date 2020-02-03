@@ -27,8 +27,8 @@ public final class Constants {
   public static final int OPERATOR_CONTROLLER = 1;
 
   // BUTTONS
-  public static final int RAISE_UP_BUTTON = 0;
-  public static final int LOWER_DOWN_BUTTON = 1;
-  public static final int GEAR_CLIMB_BUTTON = 2;
+  public static final int RAISE_UP_BUTTON = 1;
+  public static final int LOWER_DOWN_BUTTON = 2;
+  public static final int GEAR_CLIMB_BUTTON = 3;
 }
 
