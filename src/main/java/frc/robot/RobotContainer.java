@@ -20,40 +20,26 @@ public class RobotContainer {
     // SUBSYSTEMS
     private final Climber CLIMBER = new Climber();
 
-    // BASE CLIMBER COMMANDS
-    private final StartEndCommand climbCommand = new StartEndCommand(
-        () -> CLIMBER.reversePrimary(), 
-        () -> CLIMBER.stopPrimary(), 
+    // CLIMBER COMMMANDS
+    private final StartEndCommand raiseLifter = new StartEndCommand(
+        () -> CLIMBER.setLifterSpeed(0.75),
+        () -> CLIMBER.setLifterSpeed(0),
         CLIMBER
     );
-    private final StartEndCommand raisePrimaryCommand = new StartEndCommand(
-        () -> CLIMBER.raisePrimary(), 
-        () -> CLIMBER.stopPrimary(), 
+
+    private final StartEndCommand lowerLifter = new StartEndCommand(
+        () -> CLIMBER.setLifterSpeed(-0.75),
+        () -> CLIMBER.setLifterSpeed(0),
         CLIMBER
     );
-    private final StartEndCommand raiseSecondaryCommand = new StartEndCommand(
-        () -> CLIMBER.raiseSecondary(), 
-        () -> CLIMBER.stopSecondary(), 
-        CLIMBER
-    );
-    private final StartEndCommand reverseSecondaryCommand = new StartEndCommand(
-        () -> CLIMBER.reverseSecondary(), 
-        () -> CLIMBER.stopSecondary(), 
+
+    private final StartEndCommand gearClimb = new StartEndCommand(
+        () -> CLIMBER.setGearMotorSpeed(0.75),
+        () -> CLIMBER.setGearMotorSpeed(0),
         CLIMBER
     );
 
 
-    // SECOND LEVEL CLIMBER COMMANDS
-    // TODO - check timeout times - I kind of made them up
-    private final ConditionalCommand climbOrLower = new ConditionalCommand(
-        raisePrimaryCommand.withTimeout(6), climbCommand.withTimeout(6).andThen(reverseSecondaryCommand.withTimeout(3)), 
-        CLIMBER.hasClimbedBooleanSupplier
-    );
-    private final ConditionalCommand pistonUpOrDown = new ConditionalCommand(
-        reverseSecondaryCommand.withTimeout(2), 
-        raiseSecondaryCommand.withTimeout(2), 
-        CLIMBER.pistonUpSupplier
-    );
 
     // MAKE A NEW JOYSTICK
 
@@ -63,8 +49,9 @@ public class RobotContainer {
 
     // CLIMB BUTTONS
 
-    private final JoystickButton pistonUpOrDownButton = new JoystickButton(opController, RAISE_OR_LOWER_CLIMB_PISTONS),
-                                 climbButton = new JoystickButton(opController, CLIMB_OR_LOWER);
+    private final JoystickButton raiseUpButton = new JoystickButton(opController, RAISE_UP_BUTTON),
+                                 lowerDownButton = new JoystickButton(opController, LOWER_DOWN_BUTTON),
+                                 gearClimbButton = new JoystickButton(opController, GEAR_CLIMB_BUTTON);
 
     public RobotContainer() {
         configureButtonActions();
@@ -75,9 +62,9 @@ public class RobotContainer {
      */
     private void configureButtonActions() {
         // CLIMB BUTTONS
-         // CLIMB BUTTONS
-         climbButton.whenPressed(climbOrLower);
-         pistonUpOrDownButton.whenPressed(pistonUpOrDown);
+        raiseUpButton.whenHeld(raiseLifter);
+        lowerDownButton.whenHeld(lowerLifter);
+        gearClimbButton.whenHeld(gearClimb);
  
     }
 

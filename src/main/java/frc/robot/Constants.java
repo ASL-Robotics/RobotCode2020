@@ -18,18 +18,17 @@ package frc.robot;
 public final class Constants {
 
   // === ROBOT PORTS === //
-  // PISTONS
-  public static final int SECONDARY_PISTON_1 = 0;
-  public static final int SECONDARY_PISTON_2 = 1;
-  public static final int PRIMARY_PISTON_1 = 2;
-  public static final int PRIMARY_PISTON_2 = 3;
+  // MOTORS
+  public static final int LIFTER_MOTOR = 0;
+  public static final int GEAR_MOTOR1 = 1;
+  public static final int GEAR_MOTOR2 = 2;
 
   // CONTROLLERS
   public static final int OPERATOR_CONTROLLER = 1;
 
-  // CLIMBING
-   // CLIMBING
-   public static final int RAISE_OR_LOWER_CLIMB_PISTONS = 5;
-   public static final int CLIMB_OR_LOWER = 6;
+  // BUTTONS
+  public static final int RAISE_UP_BUTTON = 0;
+  public static final int LOWER_DOWN_BUTTON = 1;
+  public static final int GEAR_CLIMB_BUTTON = 2;
 }
 

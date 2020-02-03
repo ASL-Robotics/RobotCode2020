@@ -7,63 +7,34 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static frc.robot.Constants.*;
 
-import java.util.function.BooleanSupplier;
 
 public class Climber extends SubsystemBase {
 
   
   // FIELDS ETC.
-  private DoubleSolenoid secondaryPiston, primaryPiston;
-  private boolean hasClimbed = false;
-  private boolean pistonUp = false;
-   
+  private VictorSP lifterMotor;
+  private VictorSP gearBoxMotor1, gearBoxMotor2;
+
 
   // CONSTRUCTOR
   public Climber() {
-    secondaryPiston = new DoubleSolenoid(SECONDARY_PISTON_1, SECONDARY_PISTON_2);
-    primaryPiston = new DoubleSolenoid(PRIMARY_PISTON_1, PRIMARY_PISTON_2);
+    lifterMotor = new VictorSP(LIFTER_MOTOR);
+    gearBoxMotor1 = new VictorSP(GEAR_MOTOR1);
+    gearBoxMotor2 = new VictorSP(GEAR_MOTOR2);
   }
 
-
-  // SECONDARY PISTON BASE COMMANDS
-  public void raiseSecondary() {
-    secondaryPiston.set(DoubleSolenoid.Value.kForward);
-    pistonUp = true;
+  public void setLifterSpeed(double speed){
+    lifterMotor.set(speed);
   }
 
-  public void stopSecondary() {
-    secondaryPiston.set(DoubleSolenoid.Value.kOff);
+  public void setGearMotorSpeed(double speed){
+    gearBoxMotor1.set(speed);
+    gearBoxMotor2.set(speed);
   }
-
-  public void reverseSecondary() {
-    secondaryPiston.set(DoubleSolenoid.Value.kReverse);
-    pistonUp = false;
-  }
-  
-
-  // PRIMARY PISTON BASE COMMANDS
-  public void raisePrimary() {
-    primaryPiston.set(DoubleSolenoid.Value.kForward);
-    hasClimbed = true;
-  }
-
-  public void stopPrimary() {
-    primaryPiston.set(DoubleSolenoid.Value.kOff);
-  }
-
-  public void reversePrimary() {
-    primaryPiston.set(DoubleSolenoid.Value.kReverse);
-    hasClimbed = false;
-  }
-
-
-  // BOOLEANSUPPLIERS: For robotContainer climber secondary commands
-  public BooleanSupplier hasClimbedBooleanSupplier = () -> hasClimbed;
-  public BooleanSupplier pistonUpSupplier = () -> pistonUp;
 
   @Override
   public void periodic() {
