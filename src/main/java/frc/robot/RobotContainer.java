@@ -9,8 +9,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.*;
-import frc.robot.commands.auto.routines.TestAutoCommandGroup;
+import edu.wpi.first.wpilibj2.command.StartEndCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
 
 import static frc.robot.Constants.*;
@@ -20,33 +20,28 @@ public class RobotContainer {
     // SUBSYSTEMS
     private final Drivetrain DRIVETRAIN = new Drivetrain();
 
-    public final Joystick driverController = new Joystick(DRIVER_CONTROLLER), opController = new Joystick(OPERATOR_CONTROLLER);
+    public final Joystick driverController = new Joystick(DRIVER_CONTROLLER);
+
+    public final JoystickButton modeSwitchButton = new JoystickButton(driverController, MODE_SWITCH_BUTTON);
 
     public RobotContainer() {
         configureButtonActions();
     }
 
+     public final StartEndCommand modeSwitch = new StartEndCommand(
+         () -> DRIVETRAIN.modeSlow(),
+         () -> DRIVETRAIN.modeFast(),
+         DRIVETRAIN
+     ); 
+
     /**
      * Config button actions: it changes what does each button do. Don't touch this to change bindings
      */
     private void configureButtonActions() {
-
+        modeSwitchButton.whenHeld(modeSwitch);
     }
 
     public Drivetrain getDrivetrain() {
         return this.DRIVETRAIN;
     }
-
-    /**
-     * Use this to pass the autonomous command to the main {@link Robot} class.
-     *
-     * @return the command to run in autonomous
-     */
-
-    public Command getAutonomousCommand() {
-        // An ExampleCommand will run in autonomous
-        return new TestAutoCommandGroup(DRIVETRAIN);
-
-    }
-
 }
