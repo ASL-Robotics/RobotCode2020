@@ -56,7 +56,7 @@ public class Drivetrain extends SubsystemBase {
   public void arcadeDrive(double x, double z){
     x *= Math.abs(x*x);
     z *= Math.abs(z*z);
-    z *= (isFast ? 0.5 : 0.9);
+    x *= (isFast ? 0.35 : 0.9);
     tankDrive(x+z, x-z);
   }
 
