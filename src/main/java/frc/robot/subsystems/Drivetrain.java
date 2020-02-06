@@ -40,12 +40,12 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void modeSlow(){
-    speedMode = 1;
+    speedMode = 0.25;
     isFast = false;
   }
 
   public void modeFast(){
-    speedMode = 0.25;
+    speedMode = 1;
     isFast = true;
   }
 
