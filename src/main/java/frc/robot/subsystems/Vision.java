@@ -34,20 +34,27 @@ public class Vision extends SubsystemBase {
   }
   
   /**
-   * Gets an arraylist of all the current "blocks" the camera detects and returns true
-   * if the largest block's color matches the one inputed
+   * Gets an arraylist of all the current "blocks" the camera detects and returns the 
+   * largest block that is the same color as requested in the parameters 
    * 
-   * @param color Color to check if the largest block matches it
-   * @return Returns true if the colors inputed and of the largest block are the same
+   * @param color Color to check if the block's color matches it
+   * @return Returns the largest block of the same color
    */
-  public boolean getRecentBlocks(Color color) {
+  public Block getLargestSameColorBlock(Color color) {
     // Get data from all blocks and recieve said data
     pixyCCC.getBlocks(true, 255, 255);
     ArrayList<Block> blocks = pixyCCC.getBlocks();
 
-    // Send and gets data from largest block (color)
-    Color myColor = getBlockColor(blocks.get(0));
-    return(myColor.equals(color));
+    // Goes through every block to get largest same color block
+    Block myBlock = null;
+    for (Block block: blocks) {
+      if (color.equals(getBlockColor(block))) {
+        myBlock = block;
+        break;
+      }
+    }
+
+    return(myBlock);
   }
 
   /**
